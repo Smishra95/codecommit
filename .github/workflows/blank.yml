@@ -1,0 +1,14 @@
+name: Hello World
+on: [push]
+jobs:
+  Hello-World-Job:
+    runs-on:
+      - codebuild-RashiTest-${{ github.run_id }}-${{ github.run_attempt }}
+      - image:windows-2.0
+    steps:
+      - name: test
+        run: |
+          Write-Host "OS:$([System.Environment]::OSVersion.Version)"
+          Write-Host "platform:$([System.Environment]::OSVersion.Platform)"
+          Write-Host "Vstring:$([System.Environment]::OSVersion.VersionString)"
+        shell: pwsh
